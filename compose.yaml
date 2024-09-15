@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  # Servicio para la base de datos PostgreSQL
+  postgres-db:
+    image: postgres:14
+    container_name: fibonacci_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fibonacci_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - fibonacci-network
+
+  # Servicio para la aplicación Spring Boot
+  fibonacci-api:
+    image: fibonacci-api:latest  # Asegúrate de que este sea el nombre correcto de la imagen que construyas
+    container_name: fibonacci_api
+    depends_on:
+      - postgres-db
+    environment:
+      SPRING_APPLICATION_NAME: fibonacci-api
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/fibonacci_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_JPA_DEFER_DATASOURCE_INITIALIZATION: "true"
+      SPRING_SQL_INIT_MODE: always
+    ports:
+      - "8080:8080"
+    networks:
+      - fibonacci-network
+    restart: always
+
+# Red para conectar ambos servicios
+networks:
+  fibonacci-network:
+
+# Volumen para persistencia de datos de PostgreSQL
+volumes:
+  postgres_data:
