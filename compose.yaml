@@ -24,9 +24,9 @@ services:
       - postgres-db
     environment:
       SPRING_APPLICATION_NAME: fibonacci-api
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/fibonacci_db
-      SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: postgres
+      SPRING_DATASOURCE_URL: postgresql://fibonacci_db_o0b2_user:Zx9hIcRxXzsUCnmH4WQDVhW2zehMoMf4@dpg-crjnukrtq21c73a4f70g-a/fibonacci_db_o0b2
+      SPRING_DATASOURCE_USERNAME: fibonacci_db_o0b2_user
+      SPRING_DATASOURCE_PASSWORD: Zx9hIcRxXzsUCnmH4WQDVhW2zehMoMf4
       SPRING_JPA_PROPERTIES_HIBENATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
       SPRING_JPA_HIBERNATE_DDL_AUTO: create
       SPRING_JPA_SHOW_SQL: "true"
