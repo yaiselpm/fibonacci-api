@@ -11,6 +11,15 @@
 * Spring Boot
 * PostgreSql
 
+### Documentación
+* La aplicacion utiliza Caffeine para el manejo de cache. 
+* En la base datos se utiliza PostgreSQL, y en la API se utiliza Spring Boot.
+* La aplicacion contiene dos entidades para guardar la información.(fibonacci_number y fibonacci_array)
+* Fibonacci_array contiene los datos de los numeros de fibonacci intermedios.
+* Fibonacci_number contiene la información del numero de fibonacci y la cantidad de veces que se ha consultado.
+* Los numeros se almacenan en formato String para no dar desbordamiento de memoria.
+* El algoritmo utilizado para la solución de Fibonacci es con suma matricial.
+
 ### Instalación y Ejecución
 
 **Clona el repositorio:**
